@@ -1,5 +1,0 @@
-
-L	java:S106"+Replace this use of System.out by a logger.(ƒõ±¦úÿÿÿÿ8åðûô¾1
-L	java:S106"+Replace this use of System.out by a logger.(ñô™Žýÿÿÿÿ8˜×ƒõ¾1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8¼è‚õ¾1
