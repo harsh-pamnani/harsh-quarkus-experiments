@@ -20,5 +20,6 @@ public class ColorMain {
 
         ColorRecord cr = new ColorRecord(255, 0, 0);
         System.out.println(cr.red()); // Getter will work because record generates getter by default
+//        cr.setRed(155); // Setter won't work because record are immutable by default
     }
 }
