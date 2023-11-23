@@ -1,4 +1,4 @@
-package main.jacksonandlombok;
+package main.recordVsLombok;
 
 public class ColorMain {
     public static void main(String[] args) {

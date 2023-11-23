@@ -1,4 +1,4 @@
-package main.jacksonandlombok;
+package main.recordVsLombok;
 
 public record ColorRecord(int red, int green, int blue) {
     public String getHexString() {

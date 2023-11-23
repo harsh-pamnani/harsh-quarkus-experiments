@@ -1,4 +1,4 @@
-package main.jacksonandlombok;
+package main.recordVsLombok;
 
 import lombok.AccessLevel;
 import lombok.Getter;
