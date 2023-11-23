@@ -1,4 +1,4 @@
-package main.jacksonAndLombok;
+package main.jacksonandlombok;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
