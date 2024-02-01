@@ -1,4 +1,4 @@
-package main.emptytypes;
+package main.jacksonandlombok.emptytypes;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
