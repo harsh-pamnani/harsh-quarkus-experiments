@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
     2. That will generate the native image in target folder
     3. Run the native image using "./target/reflection-1.0.0-SNAPSHOT-runner main.reflection.Exp2"
     4. Since Exp2 is not registered for reflection, it will throw an exception
-    5. Just uncomment @RegisterForReflection from Exp2 and run the native image again. It should work now.
+    5. Just add @RegisterForReflection in Exp2 and run the native image again. It should work now.
     6. Notice that Exp1 doesn't need to be registered for reflection because it is hard-coded in Class.forName. So, it will automatically registered for reflection
  */
 //@QuarkusMain
