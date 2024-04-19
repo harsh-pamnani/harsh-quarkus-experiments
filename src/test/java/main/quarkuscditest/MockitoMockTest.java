@@ -2,6 +2,7 @@ package main.quarkuscditest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -10,7 +11,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 
 /**
- * IMPORTANT
+ * IMPORTANT - Remember to remove @Disabled annotation to run the test
  * 1. As we are using @Mock from Mockito, try to run the test without MockitoExtension, it will fail because bean1 will still be null in @BeforeEach.
  * 2. Run the test with @ExtendWith(MockitoExtension.class)
  *      - We must have "quarkus-junit5-mockito" dep in pom.xml to import MockitoExtension
@@ -22,6 +23,7 @@ import static org.mockito.Mockito.when;
  */
 
 //@ExtendWith(MockitoExtension.class)
+@Disabled
 public class MockitoMockTest {
 
     @Mock

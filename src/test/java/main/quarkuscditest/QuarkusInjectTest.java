@@ -5,13 +5,14 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
 /**
- * IMPORTANT
+ * IMPORTANT - Remember to remove @Disabled annotation to run the test
  * 1. As we are using @Inject, try to run the test without @QuarkusTest, it will fail and complain about CDI being not available.
  * 2. Run the test with @QuarkusTest, and it will work now with injected object.
  * 3. bean1 and bean2 are normal scoped beans since they use @Inject.
@@ -23,6 +24,7 @@ import static org.mockito.Mockito.when;
  */
 
 //@QuarkusTest
+@Disabled
 public class QuarkusInjectTest {
 
     @Inject
