@@ -1,7 +1,6 @@
-package main;
+package main.reflection.reflectiontotestdisabled;
 
 import io.quarkus.test.junit.QuarkusTest;
-import main.reflectiontotestdisabled.Province;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest

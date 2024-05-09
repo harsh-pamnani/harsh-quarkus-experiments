@@ -1,6 +1,4 @@
-package main.reflectiontotestdisabled;
-
-import io.quarkus.runtime.annotations.QuarkusMain;
+package main.reflection.reflectiontotestdisabled;
 
 /*
     IMPORTANT

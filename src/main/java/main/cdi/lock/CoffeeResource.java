@@ -1,4 +1,4 @@
-package main.cdilock;
+package main.cdi.lock;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

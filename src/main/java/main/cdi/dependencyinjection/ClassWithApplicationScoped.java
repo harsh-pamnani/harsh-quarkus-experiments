@@ -1,4 +1,4 @@
-package main.dependencyinjection;
+package main.cdi.dependencyinjection;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;

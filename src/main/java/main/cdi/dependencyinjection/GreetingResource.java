@@ -1,4 +1,4 @@
-package main.dependencyinjection;
+package main.cdi.dependencyinjection;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

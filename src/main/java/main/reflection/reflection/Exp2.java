@@ -1,4 +1,4 @@
-package main.reflection;
+package main.reflection.reflection;
 
 public record Exp2(String name) {
     public static String greetings() {

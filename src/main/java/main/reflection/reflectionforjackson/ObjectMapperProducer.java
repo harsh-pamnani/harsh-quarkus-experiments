@@ -1,4 +1,4 @@
-package main.reflectionforjackson;
+package main.reflection.reflectionforjackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.enterprise.inject.Produces;

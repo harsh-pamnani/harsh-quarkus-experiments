@@ -1,4 +1,4 @@
-package main.cdilock;
+package main.cdi.lock;
 
 import io.quarkus.arc.Lock;
 import jakarta.enterprise.context.ApplicationScoped;

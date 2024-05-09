@@ -1,4 +1,4 @@
-package main.reflectionforjackson;
+package main.reflection.reflectionforjackson;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

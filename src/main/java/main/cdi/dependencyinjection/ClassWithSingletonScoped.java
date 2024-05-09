@@ -1,11 +1,11 @@
-package main.dependencyinjection;
+package main.cdi.dependencyinjection;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Singleton;
 
-@RequestScoped
-public class ClassWithRequestScoped {
+@Singleton
+public class ClassWithSingletonScoped {
     private static int count = 0;
 
     @PostConstruct

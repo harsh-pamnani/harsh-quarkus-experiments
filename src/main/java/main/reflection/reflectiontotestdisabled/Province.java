@@ -1,7 +1,5 @@
-package main.reflectiontotestdisabled;
+package main.reflection.reflectiontotestdisabled;
 
-
-import io.quarkus.runtime.annotations.RegisterForReflection;
 
 //@RegisterForReflection
 public enum Province {

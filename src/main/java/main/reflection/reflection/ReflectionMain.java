@@ -1,6 +1,4 @@
-package main.reflection;
-
-import io.quarkus.runtime.annotations.QuarkusMain;
+package main.reflection.reflection;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -18,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 //@QuarkusMain
 public class ReflectionMain {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        var clazz1 = Class.forName("main.reflection.Exp1");
+        var clazz1 = Class.forName("main.reflection.reflection.Exp1");
         var method1 = clazz1.getDeclaredMethod("greetings");
         var result1 = method1.invoke(null);
         System.out.println(result1);
