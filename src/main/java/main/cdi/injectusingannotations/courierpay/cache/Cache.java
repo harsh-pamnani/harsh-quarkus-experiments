@@ -1,4 +1,4 @@
-package main.cdi.injectusingannotations.courierpay.temp;
+package main.cdi.injectusingannotations.courierpay.cache;
 
 import java.time.Duration;
 import java.util.Map;

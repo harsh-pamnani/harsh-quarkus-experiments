@@ -1,14 +1,13 @@
-package main.cdi.injectusingannotations.courierpay.temp;
+package main.cdi.injectusingannotations.courierpay.cache;
 
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 
 import java.util.Map;
 
 /**
- * Since ActualRedisCache1 has duration override, it would take that.
- * ActualRedisCache2 would take the default duration present in SimpleRedisCache.
+ * Since ActualCache1 has duration override, it would take that.
+ * ActualCache2 would take the default duration present in SimpleRedisCache.
  */
 
 @Path("/cache-demo")

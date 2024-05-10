@@ -1,4 +1,4 @@
-package main.cdi.injectusingannotations.courierpay.temp;
+package main.cdi.injectusingannotations.courierpay.cache;
 
 import java.time.Duration;
 import java.util.Map;
@@ -13,6 +13,6 @@ public abstract class SimpleRedisCache<R, S> implements Cache<R, S> {
 
     @Override
     public Duration getExpirationDuration() {
-        return Duration.ofMinutes(15);
+        return EXPIRATION;
     }
 }
