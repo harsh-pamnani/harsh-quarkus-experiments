@@ -1,8 +1,8 @@
 package main.cdi.injectusingannotations;
 
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.jboss.logging.Logger;
 
 /**
  * This resource demonstrates the use of CDI annotations to inject beans.
@@ -27,7 +27,7 @@ public class Resource {
     @Path("/resource-1")
     public String get1() {
         classParent1.hello();
-        System.out.println("--------------------");
+        Logger.getLogger(Resource.class).info("--------------------");
         classParent2.hello();
         return "Hello from CDI annotation resource 1";
     }
