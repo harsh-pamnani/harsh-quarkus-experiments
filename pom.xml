@@ -118,6 +118,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
+
         <!-- Other Dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
