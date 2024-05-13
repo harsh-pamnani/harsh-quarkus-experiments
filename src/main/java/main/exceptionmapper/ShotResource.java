@@ -5,7 +5,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
 /**
- * Hit `POST http://localhost:8080/shot` endpoint with body as `{"rowNumber": -1}`.
+ * Hit `POST http://localhost:9999/shot` endpoint with body as `{"rowNumber": -1}`.
  * See that it generates exception with `406` error - utilizing the customer exception mapper.
  */
 
