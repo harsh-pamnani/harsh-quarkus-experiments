@@ -20,6 +20,11 @@
         <quarkus.platform.version>3.10.0</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.2.5</surefire-plugin.version>
+        <version.jooq>3.19.0</version.jooq>
+        <jooq.outputdir>src/main/jooq</jooq.outputdir>
+        <db.url>jdbc:mysql://localhost:9990/my_database</db.url>
+        <db.username>root</db.username>
+        <db.password>root_password</db.password>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +74,18 @@
             <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
 
+        <!-- Quarkus - Testing -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.quarkus</groupId>-->
+        <!--            <artifactId>quarkus-junit5-mockito</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
         <!-- Quarkus - DB -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -89,17 +106,22 @@
             <artifactId>flyway-mysql</artifactId>
         </dependency>
 
-        <!-- Quarkus - Testing -->
+        <!-- DB - jOOQ -->
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
-            <scope>test</scope>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${version.jooq}</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>io.quarkus</groupId>-->
-        <!--            <artifactId>quarkus-junit5-mockito</artifactId>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>${version.jooq}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>${version.jooq}</version>
+        </dependency>
 
         <!-- Jackson Dependencies -->
         <dependency>
@@ -225,6 +247,41 @@
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>${version.jooq}</version>
+                <executions>
+                    <execution>
+                        <id>jooq-codegen</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbc>
+                        <url>${db.url}</url>
+                        <user>${db.username}</user>
+                        <password>${db.password}</password>
+                    </jdbc>
+                    <generator>
+                        <database>
+                            <!-- If schema is not given, by default it will generate code for all schemas in DB -->
+                            <inputSchema>my_database</inputSchema>
+                        </database>
+
+                        <target>
+                            <!-- If not provided, default value is org.jooq.generated -->
+                            <packageName>org.jooq.temp</packageName>
+                            <!-- If not provided, default value is "/target/generated-sources/jooq" -->
+                            <directory>target/generated-sources</directory>
+                        </target>
+                    </generator>
                 </configuration>
             </plugin>
         </plugins>

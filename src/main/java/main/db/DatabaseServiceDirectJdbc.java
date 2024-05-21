@@ -12,18 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Prerequisite - We must have `employees` table in DB with 3 columns (id, name, age) in order to execute this
+ * Prerequisite - We must have `employees` table in DB with 3 columns (id, name, age) in order to execute this.
+ * If jooq is enabled, this will be taken care of automatically.
  *
  * This class is not using any ORM, I am directly using the JDBC API.
- * It is not ideal, but this is just a demo.
+ * It is not ideal, but this is just a demo to show direct usage of JDBC.
  */
 @ApplicationScoped
-public class DatabaseService {
+public class DatabaseServiceDirectJdbc {
 
     @Inject
     AgroalDataSource dataSource;
 
-    public List<Employee> getAllEmployeesFromDb() {
+    public List<Employee> getAllEmployeesDirectlyUsingJdbc() {
         List<Employee> result = new ArrayList<>();
         String query = "SELECT * FROM employees";
 
