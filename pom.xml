@@ -250,6 +250,30 @@
                 </configuration>
             </plugin>
 
+            <!-- Reference - https://www.jooq.org/doc/latest/manual/getting-started/tutorials/jooq-with-flyway/ -->
+            <!-- Plugin for Flyway code generation during build -->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <!-- Note that we're executing the Flyway plugin in the "generate-sources" phase -->
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!-- Note that we need to prefix the db/migration path with filesystem: to prevent Flyway
+                     from looking for our migration scripts only on the classpath -->
+                <configuration>
+                    <url>${db.url}</url>
+                    <user>${db.username}</user>
+                    <password>${db.password}</password>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin for Jooq code generation during build -->
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
