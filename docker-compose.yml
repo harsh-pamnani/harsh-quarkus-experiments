@@ -12,3 +12,9 @@ services:
         MYSQL_PASSWORD: user_password
     ports:
         - "9990:3306"
+    volumes:
+      - mysql_data_temp_harsh:/var/lib/mysql
+
+# Mounts a volume to persist data.
+volumes:
+  mysql_data_temp_harsh:
