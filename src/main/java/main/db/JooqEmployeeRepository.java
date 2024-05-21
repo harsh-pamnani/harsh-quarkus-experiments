@@ -1,44 +1,42 @@
 package main.db;
 
-import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
-import org.jooq.temp.tables.records.EmployeesRecord;
+import org.jooq.temp.tables.records.EmployeeRecord;
 
 import java.util.List;
 
-import static org.jooq.temp.tables.Employees.EMPLOYEES;
+import static org.jooq.temp.tables.Employee.EMPLOYEE;
 
 @ApplicationScoped
 public class JooqEmployeeRepository {
 
-    @Inject
-    AgroalDataSource dataSource;
-
-    @Inject
     DSLContext dslContext;
 
+    @Inject
+    public JooqEmployeeRepository(DSLContext dslContext) {
+        this.dslContext = dslContext;
+    }
+
     public List<Employee> getAllEmployees() {
-        return dslContext.selectFrom(EMPLOYEES)
-                                          .fetch()
-                                          .stream()
-                                          .map(this::deserialize)
-                                          .toList();
+        return dslContext.selectFrom(EMPLOYEE)
+                         .fetch()
+                         .stream()
+                         .map(this::deserialize)
+                         .toList();
     }
 
     public Employee createEmployee(Employee employee) {
-        dslContext.insertInto(EMPLOYEES).set(serialize(employee)).execute();
+        dslContext.insertInto(EMPLOYEE).set(serialize(employee)).execute();
         return employee;
     }
 
-    private Employee deserialize(EmployeesRecord record) {
+    private Employee deserialize(EmployeeRecord record) {
         return new Employee(record.getId(), record.getName(), record.getAge());
     }
 
-    private EmployeesRecord serialize(Employee employee) {
-        return new EmployeesRecord(employee.id(), employee.name(), employee.age());
+    private EmployeeRecord serialize(Employee employee) {
+        return new EmployeeRecord(employee.id(), employee.name(), employee.age());
     }
 }

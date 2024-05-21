@@ -1,9 +1,9 @@
 package main.db;
 
 import io.agroal.api.AgroalDataSource;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
-import jakarta.enterprise.context.RequestScoped;
 import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
@@ -14,9 +14,12 @@ import org.jooq.impl.DSL;
 import org.jooq.impl.DefaultConfiguration;
 
 public class DslContextProducer {
+    final AgroalDataSource dataSource;
 
     @Inject
-    AgroalDataSource dataSource;
+    public DslContextProducer(AgroalDataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Produces
     @RequestScoped

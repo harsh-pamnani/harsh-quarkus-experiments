@@ -14,15 +14,19 @@ import java.util.List;
 /**
  * Prerequisite - We must have `employees` table in DB with 3 columns (id, name, age) in order to execute this.
  * If jooq is enabled, this will be taken care of automatically.
- *
+ * <p>
  * This class is not using any ORM, I am directly using the JDBC API.
  * It is not ideal, but this is just a demo to show direct usage of JDBC.
  */
 @ApplicationScoped
 public class DatabaseServiceDirectJdbc {
 
-    @Inject
     AgroalDataSource dataSource;
+
+    @Inject
+    public DatabaseServiceDirectJdbc(AgroalDataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public List<Employee> getAllEmployeesDirectlyUsingJdbc() {
         List<Employee> result = new ArrayList<>();
