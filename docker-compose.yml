@@ -15,6 +15,15 @@ services:
     volumes:
       - mysql_data_temp_harsh:/var/lib/mysql
 
+  redis:
+    image: redis:7.2.0
+    container_name: redis-container
+    ports:
+      - "9991:6379"
+    volumes:
+      - redis_data:/data
+
 # Mounts a volume to persist data.
 volumes:
   mysql_data_temp_harsh:
+  redis_data:
