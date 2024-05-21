@@ -22,16 +22,23 @@ public class JooqEmployeeRepository {
     DSLContext dslContext;
 
     public List<Employee> getAllEmployees() {
-        List<Employee> result = dslContext.selectFrom(EMPLOYEES)
+        return dslContext.selectFrom(EMPLOYEES)
                                           .fetch()
                                           .stream()
                                           .map(this::deserialize)
                                           .toList();
+    }
 
-        return result;
+    public Employee createEmployee(Employee employee) {
+        dslContext.insertInto(EMPLOYEES).set(serialize(employee)).execute();
+        return employee;
     }
 
     private Employee deserialize(EmployeesRecord record) {
         return new Employee(record.getId(), record.getName(), record.getAge());
+    }
+
+    private EmployeesRecord serialize(Employee employee) {
+        return new EmployeesRecord(employee.id(), employee.name(), employee.age());
     }
 }

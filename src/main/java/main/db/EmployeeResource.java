@@ -2,6 +2,7 @@ package main.db;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 
@@ -19,6 +20,11 @@ public class EmployeeResource {
     @GET
     public List<Employee> getAllEmployeesFromDb() {
         return jooqEmployeeRepository.getAllEmployees();
+    }
+
+    @POST
+    public Employee createEmployee(Employee employee) {
+        return jooqEmployeeRepository.createEmployee(employee);
     }
 
     @GET
