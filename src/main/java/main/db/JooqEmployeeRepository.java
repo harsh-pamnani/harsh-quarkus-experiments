@@ -18,13 +18,15 @@ public class JooqEmployeeRepository {
     @Inject
     AgroalDataSource dataSource;
 
+    @Inject
+    DSLContext dslContext;
+
     public List<Employee> getAllEmployees() {
-        DSLContext create = DSL.using(dataSource, SQLDialect.MYSQL);
-        List<Employee> result = create.selectFrom(EMPLOYEES)
-                                      .fetch()
-                                      .stream()
-                                      .map(this::deserialize)
-                                      .toList();
+        List<Employee> result = dslContext.selectFrom(EMPLOYEES)
+                                          .fetch()
+                                          .stream()
+                                          .map(this::deserialize)
+                                          .toList();
 
         return result;
     }
