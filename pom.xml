@@ -79,6 +79,16 @@
             <artifactId>quarkus-agroal</artifactId>
         </dependency>
 
+        <!-- Quarkus - DB - Flyway -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-flyway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+        </dependency>
+
         <!-- Quarkus - Testing -->
         <dependency>
             <groupId>io.quarkus</groupId>
