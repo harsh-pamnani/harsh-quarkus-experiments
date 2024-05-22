@@ -14,16 +14,16 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-public class AuthorRedisService {
+public class RedisRepo {
     private final ValueCommands<String, Author> authorCommands;
     private final ReactiveKeyCommands<String> keyCommands;
     private final SetArgs setArgs;
 
     private static final Duration EXPIRATION = Duration.ofMinutes(10);
-    private static final Logger LOGGER = Logger.getLogger(AuthorRedisService.class);
+    private static final Logger LOGGER = Logger.getLogger(RedisRepo.class);
 
-    public AuthorRedisService(RedisDataSource ds,
-                              ReactiveRedisDataSource reactive) {
+    public RedisRepo(RedisDataSource ds,
+                     ReactiveRedisDataSource reactive) {
         authorCommands = ds.value(Author.class);
         keyCommands = reactive.key();
         setArgs = new SetArgs().ex(EXPIRATION);
@@ -42,9 +42,14 @@ public class AuthorRedisService {
         authorCommands.set(buildRedisKey(author.id()), author, setArgs);
     }
 
-    Uni<Void> del(String key) {
-        return keyCommands.del(buildRedisKey(key))
-                          .replaceWithVoid();
+    void del(String key) {
+        try {
+            authorCommands.getdel(buildRedisKey(key));
+//            keyCommands.del(buildRedisKey(key)).onItem().onFailure().invoke(() -> LOGGER.error("Error deleting the key"));
+//            keyCommands.del(buildRedisKey(key)).replaceWithVoid();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     Uni<List<String>> keys() {

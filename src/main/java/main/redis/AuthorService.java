@@ -5,20 +5,24 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Optional;
 
 @ApplicationScoped
-public class AuthorApi {
-    AuthorRedisService authorRedisService;
+public class AuthorService {
+    RedisRepo redisRepo;
 
-    public AuthorApi(AuthorRedisService authorRedisService) {
-        this.authorRedisService = authorRedisService;
+    public AuthorService(RedisRepo redisRepo) {
+        this.redisRepo = redisRepo;
     }
 
     public Optional<Author> getAuthor(String id) {
-        return authorRedisService.get(id);
+        return redisRepo.get(id);
     }
 
     public Author saveAuthorToRedis(CreateAuthorDto author) {
         Author authorToSave = author.toDomain();
-        authorRedisService.save(authorToSave);
+        redisRepo.save(authorToSave);
         return authorToSave;
+    }
+
+    public void removeAuthor(String id) {
+        redisRepo.del(id);
     }
 }
