@@ -4,7 +4,6 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
-import java.text.ParseException;
 import java.util.Optional;
 
 @Path("/author")
@@ -23,7 +22,7 @@ public class AuthorResource {
     }
 
     @POST
-    public Author createNewAuthor(CreateAuthorDto author) throws ParseException {
+    public Author createNewAuthor(CreateAuthorDto author) {
         return authorApi.saveAuthorToRedis(author);
     }
 }
