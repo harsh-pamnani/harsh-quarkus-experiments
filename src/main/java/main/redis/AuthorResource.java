@@ -5,29 +5,25 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Optional;
 
 @Path("/author")
 public class AuthorResource {
 
-    AuthorRedisService authorRedisService;
+    AuthorApi authorApi;
 
-    public AuthorResource(AuthorRedisService authorRedisService) {
-        this.authorRedisService = authorRedisService;
+    public AuthorResource(AuthorApi authorApi) {
+        this.authorApi = authorApi;
     }
 
     @GET
-    public Author getAuthor() {
-        return authorRedisService.get("author_111");
+    @Path("/{id}")
+    public Optional<Author> getAuthor(String id) {
+        return authorApi.getAuthor(id);
     }
 
     @POST
-    public Author createNewAuthor() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthdate = dateFormat.parse("1775-12-16");
-        Author author = new Author("111", "Name for Redis", birthdate, "CAN");
-        authorRedisService.saveAuthorToRedis(author);
-        return author;
+    public Author createNewAuthor(CreateAuthorDto author) throws ParseException {
+        return authorApi.saveAuthorToRedis(author);
     }
 }

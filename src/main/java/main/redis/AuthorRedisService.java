@@ -3,41 +3,47 @@ package main.redis;
 import io.quarkus.redis.datasource.ReactiveRedisDataSource;
 import io.quarkus.redis.datasource.RedisDataSource;
 import io.quarkus.redis.datasource.keys.ReactiveKeyCommands;
+import io.quarkus.redis.datasource.value.SetArgs;
 import io.quarkus.redis.datasource.value.ValueCommands;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.jboss.logging.Logger;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class AuthorRedisService {
-    private final ReactiveKeyCommands<String> keyCommands;
     private final ValueCommands<String, Author> authorCommands;
+    private final ReactiveKeyCommands<String> keyCommands;
+    private final SetArgs setArgs;
+
+    private static final Duration EXPIRATION = Duration.ofMinutes(10);
+    private static final Logger LOGGER = Logger.getLogger(AuthorRedisService.class);
 
     public AuthorRedisService(RedisDataSource ds,
                               ReactiveRedisDataSource reactive) {
-        keyCommands = reactive.key();
         authorCommands = ds.value(Author.class);
+        keyCommands = reactive.key();
+        setArgs = new SetArgs().ex(EXPIRATION);
     }
 
-    public void saveAuthorToRedis(Author author) {
-        set(createRedisKey(author.id()), author);
-    }
-
-    Author get(String key) {
-        Author value = authorCommands.get(key);
+    Optional<Author> get(String key) {
+        Author value = authorCommands.get(buildRedisKey(key));
         if (value == null) {
-            throw new RuntimeException("can't get author");
+            LOGGER.infov("No author found for id : {0}", key);
+            return Optional.empty();
         }
-        return value;
+        return Optional.of(value);
     }
 
-    void set(String key, Author author) {
-        authorCommands.set(key, author);
+    void save(Author author) {
+        authorCommands.set(buildRedisKey(author.id()), author, setArgs);
     }
 
     Uni<Void> del(String key) {
-        return keyCommands.del(key)
+        return keyCommands.del(buildRedisKey(key))
                           .replaceWithVoid();
     }
 
@@ -45,7 +51,7 @@ public class AuthorRedisService {
         return keyCommands.keys("*");
     }
 
-    private String createRedisKey(String id) {
+    private String buildRedisKey(String id) {
         return "author_" + id;
     }
 }
