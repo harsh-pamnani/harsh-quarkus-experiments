@@ -6,12 +6,18 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+
 @QuarkusTest
 class ProvinceTest {
     private static final Logger LOGGER = Logger.getLogger(ConfigResource.class);
 
     @ConfigProperty(name = "quarkus.profile")
     String quarkusProfile;
+
+    @ConfigProperty(name = "my.propB")
+    String myPropB;
 
     @Test
     void testIsDeprecated() {
@@ -22,5 +28,8 @@ class ProvinceTest {
     @Test
     void testQuarkusProfile() {
         LOGGER.info("Quarkus profile : " + quarkusProfile);
+        LOGGER.info("Test prop B : " + myPropB);
+
+        assertThat(myPropB, is("Value B from app props for test profile"));
     }
 }
