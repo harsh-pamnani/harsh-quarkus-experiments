@@ -10,12 +10,12 @@ public class CustomConfigSourceA implements ConfigSource {
     private static final Map<String, String> configuration = new HashMap<>();
 
     static {
-        configuration.put("my.propA", "Random value for A from custom config");
+        configuration.put("my.propA", "Value A from custom config");
     }
 
     @Override
     public int getOrdinal() {
-        return 1000;
+        return 275;
     }
 
     @Override

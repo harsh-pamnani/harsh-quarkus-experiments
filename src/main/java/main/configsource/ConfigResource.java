@@ -15,6 +15,9 @@ public class ConfigResource {
     @ConfigProperty(name = "my.propB")
     String customPropertyB;
 
+    @ConfigProperty(name = "SECRET")
+    String secretProperty;
+
     @GET
     @Path("/print-prop-values")
     public String getMyPropValue() {
@@ -23,6 +26,9 @@ public class ConfigResource {
 
         // propB's value from custom config will be ignored because it has ordinal 220 (vs 250 for application properties)
         LOGGER.infov("`my.propB` value : {0}", customPropertyB);
+
+       // SECRET from application.properties will be ignored app because will be taken from .env (as it has precedence over app props)
+        LOGGER.infov("`SECRET` value : {0}", secretProperty);
 
         return "Check console for all properties";
     }

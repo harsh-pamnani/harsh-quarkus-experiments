@@ -10,7 +10,7 @@ public class CustomConfigSourceB implements ConfigSource {
     private static final Map<String, String> configuration = new HashMap<>();
 
     static {
-        configuration.put("my.propB", "Random value for B from custom config");
+        configuration.put("my.propB", "Value B from custom config");
     }
 
     @Override
