@@ -31,6 +31,9 @@ public class ConfigResource {
     @ConfigProperty(name = "SECRET")
     String secretProperty;
 
+    @ConfigProperty(name = "caSe.seNsitIve")
+    String caseSensitiveProperty;
+
     @Inject
     AppConfig appConfig;
 
@@ -51,6 +54,9 @@ public class ConfigResource {
 
         // xyz!api%key from env gets translated to `xyz.api-key` (because of ConfigMapping) and `xyz_api_key` for config properties. Print all to check
         LOGGER.infov("`apiKey` value : {0}", appConfig.apiKey());
+
+        // Properties are case-sensitive
+        LOGGER.infov("`caSe.seNsitIve` value : {0}", caseSensitiveProperty);
 
         return "Check console for all properties";
     }
