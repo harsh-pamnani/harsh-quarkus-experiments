@@ -34,6 +34,9 @@ public class ConfigResource {
     @ConfigProperty(name = "caSe.seNsitIve")
     String caseSensitiveProperty;
 
+    @ConfigProperty(name = "quarkus.profile")
+    String quarkusProfile;
+
     @Inject
     AppConfig appConfig;
 
@@ -57,6 +60,8 @@ public class ConfigResource {
 
         // Properties are case-sensitive
         LOGGER.infov("`caSe.seNsitIve` value : {0}", caseSensitiveProperty);
+
+        LOGGER.infov("`quarkus.profile` value : {0}", quarkusProfile);
 
         return "Check console for all properties";
     }
