@@ -25,6 +25,9 @@ public class ConfigResource {
     @ConfigProperty(name = "my.propB")
     String customPropertyB;
 
+    @ConfigProperty(name = "my.propC", defaultValue = "Default value for C")
+    String customPropertyC;
+
     @ConfigProperty(name = "SECRET")
     String secretProperty;
 
@@ -39,6 +42,9 @@ public class ConfigResource {
 
         // propB's value from custom config will be ignored because it has ordinal 220 (vs 250 for application properties)
         LOGGER.infov("`my.propB` value : {0}", customPropertyB);
+
+        // propC will be taken from ConfigSourceFactoryC
+        LOGGER.infov("`my.propC` value : {0}", customPropertyC);
 
         // SECRET from application.properties will be ignored app because will be taken from .env (as it has precedence over app props)
         LOGGER.infov("`SECRET` value : {0}", secretProperty);
