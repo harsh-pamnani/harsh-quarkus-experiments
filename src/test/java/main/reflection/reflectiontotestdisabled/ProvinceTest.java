@@ -1,18 +1,14 @@
 package main.reflection.reflectiontotestdisabled;
 
 import io.quarkus.test.junit.QuarkusTest;
-import main.configsource.ConfigResource;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.jboss.logging.Logger;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @QuarkusTest
 class ProvinceTest {
-    private static final Logger LOGGER = Logger.getLogger(ConfigResource.class);
-
     @ConfigProperty(name = "quarkus.profile")
     String quarkusProfile;
 
@@ -21,15 +17,13 @@ class ProvinceTest {
 
     @Test
     void testIsDeprecated() {
-        LOGGER.info(Province.isDeprecated("ON"));
-        LOGGER.info(Province.isDeprecated("NY"));
+        assertThat(Province.isDeprecated("ON"), is(false));
+        assertThat(Province.isDeprecated("NY"), is(true));
     }
 
     @Test
     void testQuarkusProfile() {
-        LOGGER.info("Quarkus profile : " + quarkusProfile);
-        LOGGER.info("Test prop B : " + myPropB);
-
+        assertThat(quarkusProfile, is("test"));
         assertThat(myPropB, is("Value B from app props for test profile"));
     }
 }

@@ -14,6 +14,13 @@ import org.jboss.logging.Logger;
  * 4. Hit it again and check the console in IntelliJ.
  * 5. ApplicationScoped and SingletonScoped will be created only once. RequestScoped will be created for each request.
  */
+
+/**
+ * Reference - https://quarkus.io/guides/opentelemetry
+ * I have added Open Telemetry in the application. So, all the resource by default will be traced.
+ * Traces are sent to localhost:4317 by Quarkus. If we want to configure, we can set `quarkus.otel.exporter.otlp.traces.endpoint`
+ * You can start the Jaeger UI at http://localhost:16686/ and check the traces for all endpoints.
+ */
 @Path("/hello")
 public class GreetingResource {
     

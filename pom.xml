@@ -74,6 +74,12 @@
             <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
 
+        <!-- Quarkus - Open Telemetry -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-opentelemetry</artifactId>
+        </dependency>
+
         <!-- Quarkus - Testing -->
         <dependency>
             <groupId>io.quarkus</groupId>
