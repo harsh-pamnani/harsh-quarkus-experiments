@@ -24,6 +24,6 @@ class ProvinceTest {
     @Test
     void testQuarkusProfile() {
         assertThat(quarkusProfile, is("test"));
-        assertThat(myPropB, is("Value B from app props for test profile"));
+        assertThat(myPropB, is("Value B from test specific app props"));
     }
 }
