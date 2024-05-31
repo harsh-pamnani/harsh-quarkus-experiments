@@ -1,3 +1,10 @@
 .idea/
 target/
 *.iml
+
+# Terraform
+.terraform
+*.tfstate*
+*.tfplan
+.terraform.lock.hcl
+.modules_tf
