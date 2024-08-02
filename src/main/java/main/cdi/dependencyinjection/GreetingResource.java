@@ -23,14 +23,19 @@ import org.jboss.logging.Logger;
  */
 @Path("/hello")
 public class GreetingResource {
-    
+    private ClassWithApplicationScoped classWithApplicationScoped;
+
+    // Since there is only one constructor of ClassWithApplicationScoped, we don't need to specify @Inject.
+    // Reference - https://quarkus.io/guides/cdi-reference#simplified-constructor-injection
+    // @Inject
+    GreetingResource(ClassWithApplicationScoped classWithApplicationScoped) {
+        this.classWithApplicationScoped = classWithApplicationScoped;
+    }
+
     private static final Logger LOGGER = Logger.getLogger(GreetingResource.class);
 
     @Inject
     private ClassWithSingletonScoped classWithSingletonScoped;
-
-    @Inject
-    private ClassWithApplicationScoped classWithApplicationScoped;
 
     @Inject 
     private ClassWithRequestScoped classWithRequestScoped;
