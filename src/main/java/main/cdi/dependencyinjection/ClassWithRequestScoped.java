@@ -14,6 +14,6 @@ public class ClassWithRequestScoped {
     }
 
     public String greetUser(String name) {
-        return "Hello, " + name + "! " + count + " instances of this class have been created.";
+        return "Hello, " + name + "! " + count + " instances of ClassWithRequestScoped class have been created.";
     }
 }

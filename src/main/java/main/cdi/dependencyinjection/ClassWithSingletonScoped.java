@@ -14,6 +14,6 @@ public class ClassWithSingletonScoped {
     }
 
     public String greetUser(String name) {
-        return "Hello, " + name + "! " + count + " instances of this class have been created.";
+        return "Hello, " + name + "! " + count + " instances of ClassWithSingletonScoped class have been created.";
     }
 }

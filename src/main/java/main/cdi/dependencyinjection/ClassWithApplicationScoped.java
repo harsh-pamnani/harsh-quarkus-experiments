@@ -13,6 +13,6 @@ public class ClassWithApplicationScoped {
     }
 
     public String greetUser(String name) {
-        return "Hello, " + name + "! " + count + " instances of this class have been created.";
+        return "Hello, " + name + "! " + count + " instances of ClassWithApplicationScoped class have been created.";
     }
 }
