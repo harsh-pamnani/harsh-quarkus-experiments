@@ -15,3 +15,8 @@ Repo for some of the experiments
 3. Verify the native image `temp-harsh-experiments-1.0-SNAPSHOT-runner` is generated under `target` directory
 4. Now to run the app you can do `./temp-harsh-experiments-1.0-SNAPSHOT-runner`. 
     - In this case though, since we need `XYz_aPi_KeY` as an env variable, we need to run `export XYz_aPi_KeY=some-key-here && ./temp-harsh-experiments-1.0-SNAPSHOT-runner`
+
+## Generate and run docker image
+1. `quarkus build --native -Dquarkus.native.container-build=true -Dquarkus.native.container-runtime=docker`
+2. `docker build -t temp-harsh-experiments:tag-name .`
+3. `docker run --network="host" -p 9999:9999 -e XYz_aPi_KeY=any temp-harsh-experiments:tag-name` (You can run the container with the --network="host" flag, which allows the container to share the host’s network stack. This way, localhost inside the container will refer to the host’s localhost.)
