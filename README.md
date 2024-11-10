@@ -19,4 +19,4 @@ Repo for some of the experiments
 ## Generate and run docker image
 1. `quarkus build --native -Dquarkus.native.container-build=true -Dquarkus.native.container-runtime=docker`
 2. `docker build -t temp-harsh-experiments:tag-name .`
-3. `docker run --network="host" -p 9999:9999 -e XYz_aPi_KeY=any temp-harsh-experiments:tag-name` (You can run the container with the --network="host" flag, which allows the container to share the host’s network stack. This way, localhost inside the container will refer to the host’s localhost.)
+3. `docker run --network="host" -e XYz_aPi_KeY=any temp-harsh-experiments:tag-name` (You can run the container with the --network="host" flag, which allows the container to share the host’s network stack. This way, localhost inside the container will refer to the host’s localhost.)
