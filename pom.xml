@@ -192,6 +192,18 @@
             <artifactId>jboss-logging</artifactId>
         </dependency>
 
+        <!-- Required for `concepts` package code -->
+        <dependency>
+            <groupId>com.github.f4b6a3</groupId>
+            <artifactId>ulid-creator</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
         <!-- Other Dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -214,11 +226,6 @@
             <artifactId>wiremock</artifactId>
             <version>3.9.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.f4b6a3</groupId>
-            <artifactId>ulid-creator</artifactId>
-            <version>5.2.0</version>
         </dependency>
     </dependencies>
 
