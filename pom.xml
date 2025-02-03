@@ -98,6 +98,12 @@
             <artifactId>quarkus-redis-client</artifactId>
         </dependency>
 
+        <!-- Quarkus - Scheduler -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-scheduler</artifactId>
+        </dependency>
+
         <!-- Quarkus - DB -->
         <dependency>
             <groupId>io.quarkus</groupId>
