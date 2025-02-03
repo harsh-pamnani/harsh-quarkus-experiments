@@ -32,16 +32,16 @@ public class MessageStatusChecker {
 
         retryDataMap.forEach((data, count) -> {
             if (count >= MAXIMUM_RETRIES) {
-                log.info("Maximum retries reached. Cancelling the message. sessionId: " + data.sessionId() + ", offset: " + data.offset());
+                log.info("MAXIMUM retries reached. Cancelling the message. sessionId: " + data.sessionId() + ", offset: " + data.offset());
                 retryDataMap.remove(data);
                 return;
             }
 
             if (isAcknowledged(data.sessionId(), data.offset())) {
-                log.info("Message is acknowledged, removing it from retry data. sessionId: " + data.sessionId() + ", offset: " + data.offset());
+                log.info("Message IS acknowledged, removing it from retry data. sessionId: " + data.sessionId() + ", offset: " + data.offset());
                 retryDataMap.remove(data);
             } else {
-                log.info("Message is not acknowledged, increasing retry count. sessionId: " + data.sessionId() + ", offset: " + data.offset());
+                log.info("Message IS NOT acknowledged, increasing retry count. sessionId: " + data.sessionId() + ", offset: " + data.offset());
                 retryDataMap.put(data, count + 1);
             }
         });
