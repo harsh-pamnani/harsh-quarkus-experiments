@@ -40,7 +40,7 @@ public class MemoizedFunctionCaffeine {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            return input + 2;
+            return key + 2;
         });
     }
 }
