@@ -37,7 +37,6 @@ public class UniListUniExample {
         return updates.flatMap(
                               updateList -> Uni.combine().all().unis(updateList).discardItems())
                       .onFailure()
-                      .invoke(error -> System.out.println("Failed to save event sync updates: " + error))
-                      .replaceWithVoid();
+                      .invoke(error -> System.out.println("Failed to save event sync updates: " + error));
     }
 }
