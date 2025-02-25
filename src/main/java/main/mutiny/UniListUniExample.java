@@ -18,7 +18,7 @@ public class UniListUniExample {
         );
 
         // If we call `applyUpdates2` we will get `first Uni` and `second Uni` messages correctly.
-        applyUpdates1(updates).onItem().invoke(() -> System.out.println("Update applied 2")).subscribe().with(
+        applyUpdates2(updates).onItem().invoke(() -> System.out.println("Update applied 2")).subscribe().with(
                 item -> {},
                 failure -> System.out.println("Error: " + failure)
         );
