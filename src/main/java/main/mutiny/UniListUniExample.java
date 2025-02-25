@@ -11,7 +11,7 @@ public class UniListUniExample {
 
         Uni<List<Uni<Void>>> updates = Uni.createFrom().item(List.of(uni1, uni2));
 
-        applyUpdates2(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
+        applyUpdates1(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
                 item -> {},
                 failure -> System.out.println("Error: " + failure)
         );
