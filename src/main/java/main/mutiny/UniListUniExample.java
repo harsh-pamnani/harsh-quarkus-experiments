@@ -11,7 +11,14 @@ public class UniListUniExample {
 
         Uni<List<Uni<Void>>> updates = Uni.createFrom().item(List.of(uni1, uni2));
 
-        applyUpdates2(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
+        // If we call `applyUpdates1` we won't get `first Uni` and `second Uni` messages because those unis are not consumed at all
+        applyUpdates1(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
+                item -> {},
+                failure -> System.out.println("Error: " + failure)
+        );
+
+        // If we call `applyUpdates2` we will get `first Uni` and `second Uni` messages correctly.
+        applyUpdates1(updates).onItem().invoke(() -> System.out.println("Update applied 2")).subscribe().with(
                 item -> {},
                 failure -> System.out.println("Error: " + failure)
         );
