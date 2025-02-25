@@ -7,11 +7,11 @@ import java.util.List;
 public class UniListUniExample {
     public static void main(String[] args) {
         Uni<Void> uni1 = Uni.createFrom().item("first uni").onItem().invoke(s -> System.out.println(s)).replaceWithVoid();
-        Uni<Void> uni2 = Uni.createFrom().item("first uni").onItem().invoke(s -> System.out.println(s)).replaceWithVoid();
+        Uni<Void> uni2 = Uni.createFrom().item("second uni").onItem().invoke(s -> System.out.println(s)).replaceWithVoid();
 
         Uni<List<Uni<Void>>> updates = Uni.createFrom().item(List.of(uni1, uni2));
 
-        applyUpdates1(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
+        applyUpdates2(updates).onItem().invoke(() -> System.out.println("Update applied 1")).subscribe().with(
                 item -> {},
                 failure -> System.out.println("Error: " + failure)
         );
