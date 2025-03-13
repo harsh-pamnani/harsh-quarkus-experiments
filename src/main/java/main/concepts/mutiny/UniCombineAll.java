@@ -1,19 +1,20 @@
-package main.mutiny;
+package main.concepts.mutiny;
 
 import io.smallrye.mutiny.Uni;
 import lombok.extern.jbosslog.JBossLog;
 
 @JBossLog
-public class UniCombineAllWithFailure {
+public class UniCombineAll {
     public static void main(String[] args) {
         Uni<String> uni1 = Uni.createFrom().item(() -> {
             // Simulate a delay
             try {
                 Thread.sleep(1000);
-                throw new RuntimeException("Task 1 failed");
+                log.info("First Uni");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            return "Task 1";
         });
 
         Uni<String> uni2 = Uni.createFrom().item(() -> {
@@ -26,13 +27,13 @@ public class UniCombineAllWithFailure {
             return "Task 2";
         });
 
-        // discardItems() is used to discard all emitted items and allow the stream to complete without processing any of the items.
-        Uni<Void> combinedUni = Uni.combine()
+        Uni<String> combinedUni = Uni.combine()
                                      .all()
                                      .unis(uni1, uni2)
-                                     .discardItems();
+                                     .asTuple()
+                                     .map(tuple -> tuple.getItem1() + " " + tuple.getItem2());
 
-        // If one of the Uni instances fails, combinedUni will fail immediately with the same failure.
+        // combinedUni result executed only after both Uni completed
         log.info("Uni execution started");
         combinedUni.subscribe().with(log::info);
         log.info("Uni execution ended");

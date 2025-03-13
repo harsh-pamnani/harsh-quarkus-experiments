@@ -1,4 +1,4 @@
-package main.mutiny;
+package main.concepts.mutiny;
 
 import io.smallrye.mutiny.Uni;
 
@@ -35,7 +35,7 @@ public class UniListUniExample {
 
     private static Uni<Void> applyUpdates2(Uni<List<Uni<Void>>> updates) {
         return updates.flatMap(
-                              updateList -> Uni.combine().all().unis(updateList).discardItems())
+                              updateList -> Uni.combine().all().unis().discardItems())
                       .onFailure()
                       .invoke(error -> System.out.println("Failed to save event sync updates: " + error));
     }
