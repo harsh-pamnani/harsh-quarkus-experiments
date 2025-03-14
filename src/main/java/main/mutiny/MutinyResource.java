@@ -1,8 +1,10 @@
 package main.mutiny;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 
 import java.time.Duration;
 
@@ -28,6 +30,13 @@ import java.time.Duration;
  */
 @Path("/mutiny")
 public class MutinyResource {
+    private final SomeApi someApi;
+
+    @Inject
+    public MutinyResource(SomeApi someApi) {
+        this.someApi = someApi;
+    }
+
     @GET
     @Path("/get1")
     public String get1() {
@@ -49,5 +58,11 @@ public class MutinyResource {
     @Path("/get3")
     public Uni<String> get3() {
         return Uni.createFrom().item("Uni Get").onItem().delayIt().by(Duration.ofSeconds(5));
+    }
+
+    @GET
+    @Path("/call-nested-uni/{courierId}")
+    public Uni<Void> get4(@PathParam("courierId") String courierId) {
+        return someApi.ackCourierMobileEvent(courierId);
     }
 }
