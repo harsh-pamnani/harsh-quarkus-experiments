@@ -22,7 +22,7 @@ public class SomeRepo {
 
     public Uni<String> update() {
         log.info("HPXYZ : SomeRepo updated called");
-        return Uni.createFrom().item("Mobile event DB call here")
+        return Uni.createFrom().item("Mobile event from DB")
                   .onItem()
                   .invoke(s -> log.info("HPXYZ : Item retrieved from DB" + s))
                   .replaceWith("ignored");
