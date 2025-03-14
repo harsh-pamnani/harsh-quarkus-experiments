@@ -4,8 +4,6 @@ import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.jbosslog.JBossLog;
 
-import java.util.Optional;
-
 @ApplicationScoped
 @JBossLog
 public class SomeRepo {
@@ -24,6 +22,9 @@ public class SomeRepo {
 
     public Uni<String> update() {
         log.info("HPXYZ : SomeRepo updated called");
-        return Uni.createFrom().item("ignored");
+        return Uni.createFrom().item("Mobile event DB call here")
+                  .onItem()
+                  .invoke(s -> log.info("HPXYZ : Item retrieved from DB" + s))
+                  .replaceWith("ignored");
     }
 }

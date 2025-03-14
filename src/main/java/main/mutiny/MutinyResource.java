@@ -65,4 +65,10 @@ public class MutinyResource {
     public Uni<Void> get4(@PathParam("courierId") String courierId) {
         return someApi.ackCourierMobileEvent(courierId);
     }
+
+    @GET
+    @Path("/fixed-call-nested-uni/{courierId}")
+    public Uni<Void> get5(@PathParam("courierId") String courierId) {
+        return someApi.fixedAckCourierMobileEvent(courierId);
+    }
 }

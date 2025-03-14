@@ -26,7 +26,8 @@ public class MessageStatusChecker {
         retryDataMap.put(new EventData(sessionId, offset), 0); // 0 represents the count for number of retries. Starting with 0
     }
 
-    @Scheduled(every = "10s")
+    // Remove the comment to enable scheduled job
+//    @Scheduled(every = "10s")
     void checkMessageStatus() {
         log.info("Data BEFORE scheduled job block: " + retryDataMap);
 

@@ -5,8 +5,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import lombok.extern.jbosslog.JBossLog;
 
-import java.util.Optional;
-
 @ApplicationScoped
 @JBossLog
 public class SomeApi {
@@ -20,5 +18,10 @@ public class SomeApi {
     public Uni<Void> ackCourierMobileEvent(String courierId) {
         log.info("HPXYZ : SomeApi ackCourierMobileEvent called");
         return someService.ackMobileEvent(courierId);
+    }
+
+    public Uni<Void> fixedAckCourierMobileEvent(String courierId) {
+        log.info("HPXYZ : SomeApi fixedAckCourierMobileEvent called");
+        return someService.fixedAckMobileEvent(courierId);
     }
 }
