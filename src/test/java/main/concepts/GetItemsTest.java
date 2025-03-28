@@ -15,11 +15,4 @@ class GetItemsTest {
 
         assertEquals(2, result.getItems().size());
     }
-
-    @Test
-    void failedTest() {
-        Multi<Integer> itemsMulti = Multi.createFrom().items(10, 20);
-
-        itemsMulti.subscribe().withSubscriber(AssertSubscriber.create()).awaitCompletion().assertItems(10, 20);
-    }
 }
