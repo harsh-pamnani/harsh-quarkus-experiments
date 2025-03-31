@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
-class GetItemsTest {
+class AssertSubscriberTest {
     // Since we are not providing any number when creating AssertSubscriber, it would fail at awaitCompletion
     @Test
     @Disabled
