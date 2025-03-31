@@ -42,6 +42,7 @@ class GetItemsTest {
         assertEquals(2, result.getItems().size());
     }
 
+    // Since we have added `1` when creating AssertSubscriber, it would fail at awaitCompletion because the multi wouldn't have completed as it has 1 more item
     @Test
     @Disabled
     void assertSubscriber_withNumberInCreateLessThanItems_shouldFail() {
