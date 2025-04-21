@@ -8,6 +8,9 @@ Repo for some of the experiments
     - **Using IntelliJ**: Run -> Edit Configurations -> `+` -> Quarkus -> Select the application module
     - **Using terminal**: `mvn clean quarkus:dev`
 
+## How to access different UIs
+- http://localhost:9090/ to access Temporal UI.
+
 ## How to generate native image and run it
 1. Run `docker-compose.yml` at the root of the folder and verify containers are running in docker
 2. Run the maven build with `native` profile using IntelliJ or using `mvn clean install -P native` 

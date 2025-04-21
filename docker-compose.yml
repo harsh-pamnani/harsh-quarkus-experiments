@@ -34,7 +34,46 @@ services:
     environment:
       - COLLECTOR_OTLP_ENABLED=true
 
+  postgresql:
+    container_name: temporal-db
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: temporal
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes:
+      - temporal_pg_data:/var/lib/postgresql/data
+
+  temporal:
+    container_name: delco-orchestrator
+    depends_on:
+      - postgresql
+    environment:
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_USER: temporal
+      POSTGRES_PWD: temporal
+      POSTGRES_SEEDS: postgresql
+    image: temporalio/auto-setup:latest
+    ports:
+      - "7233:7233"
+
+  temporal-ui:
+    container_name: temporal-ui
+    depends_on:
+      - temporal
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      TEMPORAL_CORS_ORIGINS: http://localhost:3000
+      TEMPORAL_CSRF_COOKIE_INSECURE: true
+    image: temporalio/ui:latest
+    ports:
+      - "9090:8080"
+
+
 # Mounts a volume to persist data.
 volumes:
   mysql_data_temp_harsh:
   redis_data:
+  temporal_pg_data:
