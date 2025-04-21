@@ -215,6 +215,13 @@
             <version>3.1.8</version>
         </dependency>
 
+        <!-- Temporal -->
+        <dependency>
+            <groupId>io.temporal</groupId>
+            <artifactId>temporal-sdk</artifactId>
+            <version>1.28.0</version>
+        </dependency>
+
         <!-- Other Dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
