@@ -1,22 +1,29 @@
 package main.temporal;
 
-public class GreetingActivitiesImpl implements GreetingActivities {
+import lombok.extern.jbosslog.JBossLog;
+
+@JBossLog
+public class PizzaActivitiesImpl implements PizzaActivities {
     @Override
-    public String sayHello(String name) {
-        return "Hello " + name;
+    public void takeOrder() {
+        log.info("Order taken.");
     }
 
     @Override
-    public String sayGoodbye(String name) {
+    public void chargeCustomer(String customerId) {
         try {
             // Set the delay to 11000. It would result in StartToCloseTimeout failure for first 2 attempts,
             // and ScheduleToCloseTimeout failure for the third attempt as it would have exceeded 25 seconds by then.
             // It won't go to fourth attempt even though maximum attempts are set to 4.
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return "Interrupted while saying goodbye to " + name;
         }
-        return "Goodbye " + name;
+        log.info("Charged: " + customerId);
+    }
+
+    @Override
+    public void deliverPizza() {
+        log.info("Pizza delivered to.");
     }
 }

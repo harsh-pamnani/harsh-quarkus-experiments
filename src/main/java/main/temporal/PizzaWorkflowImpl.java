@@ -6,13 +6,13 @@ import io.temporal.workflow.Workflow;
 
 import java.time.Duration;
 
-public class GreetingWorkflowImpl implements GreetingWorkflow {
+public class PizzaWorkflowImpl implements PizzaWorkflow {
     // StartToCloseTimeout    - Max execution time for a single attempt of the activity
     // ScheduleToCloseTimeout - Max total time including retries before giving up entirely
     // RetryOptions           - Configs on how it will be retried. Here we are setting max attempts to 4.
 
-    private final GreetingActivities activities = Workflow.newActivityStub(
-            GreetingActivities.class,
+    private final PizzaActivities activities = Workflow.newActivityStub(
+            PizzaActivities.class,
             ActivityOptions.newBuilder()
                            .setStartToCloseTimeout(Duration.ofSeconds(10))
                            .setScheduleToCloseTimeout(Duration.ofSeconds(25))
@@ -23,9 +23,9 @@ public class GreetingWorkflowImpl implements GreetingWorkflow {
     );
 
     @Override
-    public String greet(String name) {
-        String hello = activities.sayHello(name);
-        String goodbye = activities.sayGoodbye(name);
-        return hello + " and " + goodbye;
+    public void startOrder(String customerId) {
+        activities.takeOrder();
+        activities.chargeCustomer(customerId);
+        activities.deliverPizza();
     }
 }

@@ -7,20 +7,21 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 
-@Path("/temporal-greet")
+@Path("/temporal-order-pizza")
 public class TemporalGreetingResource {
     @GET
-    public String greet(@QueryParam("name") String name) {
+    public String orderPizza(@QueryParam("customerId") String customerId) {
         WorkflowServiceStubs service = WorkflowServiceStubs.newInstance();
         WorkflowClient client = WorkflowClient.newInstance(service);
 
-        GreetingWorkflow workflow = client.newWorkflowStub(
-                GreetingWorkflow.class,
+        PizzaWorkflow workflow = client.newWorkflowStub(
+                PizzaWorkflow.class,
                 WorkflowOptions.newBuilder()
-                               .setTaskQueue("greeting-task-queue-name")
+                               .setTaskQueue("PIZZA_QUEUE")
                                .build()
         );
 
-        return workflow.greet(name);
+        workflow.startOrder(customerId);
+        return "Pizza ";
     }
 }

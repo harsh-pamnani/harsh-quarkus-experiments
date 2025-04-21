@@ -4,10 +4,13 @@ import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
 
 @ActivityInterface
-public interface GreetingActivities {
+public interface PizzaActivities {
     @ActivityMethod
-    String sayHello(String name);
+    void takeOrder();
 
     @ActivityMethod
-    String sayGoodbye(String name);
+    void chargeCustomer(String customerId);
+
+    @ActivityMethod
+    void deliverPizza();
 }

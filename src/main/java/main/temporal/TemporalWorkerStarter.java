@@ -21,10 +21,10 @@ public class TemporalWorkerStarter {
         WorkflowClient client = WorkflowClient.newInstance(service);
 
         WorkerFactory factory = WorkerFactory.newInstance(client);
-        Worker worker = factory.newWorker("greeting-task-queue-name");
+        Worker worker = factory.newWorker("PIZZA_QUEUE");
 
-        worker.registerWorkflowImplementationTypes(GreetingWorkflowImpl.class);
-        worker.registerActivitiesImplementations(new GreetingActivitiesImpl());
+        worker.registerWorkflowImplementationTypes(PizzaWorkflowImpl.class);
+        worker.registerActivitiesImplementations(new PizzaActivitiesImpl());
 
         factory.start();
         log.info("Started TemporalWorkerStarter");
