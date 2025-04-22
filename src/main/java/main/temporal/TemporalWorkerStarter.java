@@ -7,16 +7,22 @@ import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
-import lombok.extern.jbosslog.JBossLog;
 
 @ApplicationScoped
 @Startup
-@JBossLog
 public class TemporalWorkerStarter {
 
     @PostConstruct
     void init() {
-        log.info("Starting TemporalWorkerStarter");
+        /*
+        By default, the temporal instance connects to "localhost:7233" - which is where our temporal server is running.
+        If we want to update the address, we can use setTarget.
+
+        WorkflowServiceStubs.newInstance(WorkflowServiceStubsOptions.newBuilder()
+                                                                    .setTarget("temporal.yourdomain.com:443")
+                                                                    .build());
+        */
+
         WorkflowServiceStubs service = WorkflowServiceStubs.newInstance();
         WorkflowClient client = WorkflowClient.newInstance(service);
 
@@ -27,6 +33,5 @@ public class TemporalWorkerStarter {
         worker.registerActivitiesImplementations(new PizzaActivitiesImpl());
 
         factory.start();
-        log.info("Started TemporalWorkerStarter");
     }
 }
