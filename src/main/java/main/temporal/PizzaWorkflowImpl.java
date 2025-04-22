@@ -14,8 +14,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
     private final PizzaActivities activities = Workflow.newActivityStub(
             PizzaActivities.class,
             ActivityOptions.newBuilder()
-                           .setStartToCloseTimeout(Duration.ofSeconds(10))
-                           .setScheduleToCloseTimeout(Duration.ofSeconds(25))
+                           .setStartToCloseTimeout(Duration.ofSeconds(20))
+                           .setScheduleToCloseTimeout(Duration.ofSeconds(50))
                            .setRetryOptions(RetryOptions.newBuilder()
                                                         .setMaximumAttempts(4)
                                                         .build())
