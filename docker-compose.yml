@@ -35,7 +35,7 @@ services:
       - COLLECTOR_OTLP_ENABLED=true
 
   postgresql:
-    container_name: temporal-db
+    container_name: temporal-harsh-db
     environment:
       POSTGRES_USER: temporal
       POSTGRES_PASSWORD: temporal
