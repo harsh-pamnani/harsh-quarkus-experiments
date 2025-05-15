@@ -35,7 +35,7 @@ services:
       - COLLECTOR_OTLP_ENABLED=true
 
   postgresql:
-    container_name: temporal-harsh-db
+    container_name: temporal-db-harsh
     environment:
       POSTGRES_USER: temporal
       POSTGRES_PASSWORD: temporal
@@ -46,7 +46,7 @@ services:
       - temporal_pg_data:/var/lib/postgresql/data
 
   temporal:
-    container_name: delco-orchestrator
+    container_name: temporal-server-harsh
     depends_on:
       - postgresql
     environment:
@@ -60,7 +60,7 @@ services:
       - "7233:7233"
 
   temporal-ui:
-    container_name: temporal-ui
+    container_name: temporal-ui-harsh
     depends_on:
       - temporal
     environment:
@@ -70,6 +70,13 @@ services:
     image: temporalio/ui:latest
     ports:
       - "9090:8080"
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: mailpit-harsh
+    ports:
+      - "1025:1025"
+      - "8025:8025"
 
 
 # Mounts a volume to persist data.

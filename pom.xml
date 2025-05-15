@@ -104,6 +104,12 @@
             <artifactId>quarkus-scheduler</artifactId>
         </dependency>
 
+        <!-- Quarkus - Email -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-mailer</artifactId>
+        </dependency>
+
         <!-- Quarkus - DB -->
         <dependency>
             <groupId>io.quarkus</groupId>

@@ -10,6 +10,7 @@ Repo for some of the experiments
 
 ## How to access different UIs
 - http://localhost:9090/ to access Temporal UI.
+- http://localhost:8025/ to access Mailpit UI.
 
 ## How to generate native image and run it
 1. Run `docker-compose.yml` at the root of the folder and verify containers are running in docker
