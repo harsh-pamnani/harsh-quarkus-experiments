@@ -2,7 +2,6 @@ package main.jacksonandlombok.customserializeranddeserializer;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import java.time.LocalDateTime;
 
 public class JacksonModule extends SimpleModule {

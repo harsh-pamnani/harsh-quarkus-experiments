@@ -1,13 +1,12 @@
 package main.quarkuscditest;
 
+import static org.mockito.Mockito.when;
+
 import io.quarkus.test.InjectMock;
-import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import static org.mockito.Mockito.when;
 
 /**
  * IMPORTANT - Remember to remove @Disabled annotation to run the test
@@ -25,7 +24,7 @@ import static org.mockito.Mockito.when;
  * 5. For test `bothBeansReturnMockedMessage`,
  *      - bean1 and bean2 both has `greet` method mocked. So, both will return mocked message.
  */
-//@QuarkusTest
+// @QuarkusTest
 @Disabled
 public class QuarkusInjectMockTest {
 

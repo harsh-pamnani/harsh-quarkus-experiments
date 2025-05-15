@@ -1,4 +1,3 @@
 package main.exceptionmapper;
 
-public record Shot(Integer rowNumber) {
-}
+public record Shot(Integer rowNumber) {}

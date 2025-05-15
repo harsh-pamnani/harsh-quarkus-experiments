@@ -2,7 +2,6 @@ package main.jsoncreatorjsonproperty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-
 import java.util.Optional;
 
 public class JsonMain {
@@ -25,11 +24,15 @@ public class JsonMain {
             EmployeeWithCreator e3 = objectMapper.readValue(jsonWithDifferentFieldName, EmployeeWithCreator.class);
             System.out.println(e3);
 
-            ErrorResponseBodyWithType ex1 = new ErrorResponseBodyWithType("AAA", "something went wrong 1", "TYPE_1", Optional.of(1));
-            ErrorResponseBodyWithType ex2 = new ErrorResponseBodyWithType("BBB", "something went wrong 2", null, Optional.ofNullable(null));
+            ErrorResponseBodyWithType ex1 =
+                    new ErrorResponseBodyWithType("AAA", "something went wrong 1", "TYPE_1", Optional.of(1));
+            ErrorResponseBodyWithType ex2 =
+                    new ErrorResponseBodyWithType("BBB", "something went wrong 2", null, Optional.ofNullable(null));
 
-            // Since "ex2" has `type` as null. So if we have set "@JsonInclude(Include.NON_NULL)" for the class, it will have only "error" and "message" in the JSON.
-            // Also, "ex2" has `discount` as optional null, and we have set "@JsonInclude(Include.NON_ABSENT)" for the class, it will have only "error" and "message" in the JSON.
+            // Since "ex2" has `type` as null. So if we have set "@JsonInclude(Include.NON_NULL)" for the class, it will
+            // have only "error" and "message" in the JSON.
+            // Also, "ex2" has `discount` as optional null, and we have set "@JsonInclude(Include.NON_ABSENT)" for the
+            // class, it will have only "error" and "message" in the JSON.
             System.out.println(objectMapper.writeValueAsString(ex1));
             System.out.println(objectMapper.writeValueAsString(ex2));
         } catch (Exception e) {

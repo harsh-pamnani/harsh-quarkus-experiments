@@ -7,8 +7,7 @@ public class Coffee {
     public String countryOfOrigin;
     public Integer price;
 
-    public Coffee() {
-    }
+    public Coffee() {}
 
     public Coffee(Integer id, String name, String countryOfOrigin, Integer price) {
         this.id = id;

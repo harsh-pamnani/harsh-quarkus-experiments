@@ -11,7 +11,6 @@ public class ObjectMapperProducer {
 
     @Produces
     ObjectMapper objectMapper() {
-        return new ObjectMapper().registerModule(new Jdk8Module())
-                                 .registerModule(new JacksonModule());
+        return new ObjectMapper().registerModule(new Jdk8Module()).registerModule(new JacksonModule());
     }
 }

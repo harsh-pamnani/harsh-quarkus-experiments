@@ -26,11 +26,9 @@ public class UniCombineAllWithFailure {
             return "Task 2";
         });
 
-        // discardItems() is used to discard all emitted items and allow the stream to complete without processing any of the items.
-        Uni<Void> combinedUni = Uni.combine()
-                                     .all()
-                                     .unis(uni1, uni2)
-                                     .discardItems();
+        // discardItems() is used to discard all emitted items and allow the stream to complete without processing any
+        // of the items.
+        Uni<Void> combinedUni = Uni.combine().all().unis(uni1, uni2).discardItems();
 
         // If one of the Uni instances fails, combinedUni will fail immediately with the same failure.
         log.info("Uni execution started");

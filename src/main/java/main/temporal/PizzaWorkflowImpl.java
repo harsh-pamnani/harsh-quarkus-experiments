@@ -3,7 +3,6 @@ package main.temporal;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.common.RetryOptions;
 import io.temporal.workflow.Workflow;
-
 import java.time.Duration;
 
 public class PizzaWorkflowImpl implements PizzaWorkflow {
@@ -14,13 +13,11 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
     private final PizzaActivities activities = Workflow.newActivityStub(
             PizzaActivities.class,
             ActivityOptions.newBuilder()
-                           .setStartToCloseTimeout(Duration.ofSeconds(20))
-                           .setScheduleToCloseTimeout(Duration.ofSeconds(50))
-                           .setRetryOptions(RetryOptions.newBuilder()
-                                                        .setMaximumAttempts(4)
-                                                        .build())
-                           .build()
-    );
+                    .setStartToCloseTimeout(Duration.ofSeconds(20))
+                    .setScheduleToCloseTimeout(Duration.ofSeconds(50))
+                    .setRetryOptions(
+                            RetryOptions.newBuilder().setMaximumAttempts(4).build())
+                    .build());
 
     @Override
     public void startOrder(String customerId) {

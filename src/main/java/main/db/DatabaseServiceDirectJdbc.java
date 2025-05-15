@@ -3,7 +3,6 @@ package main.db;
 import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,13 +32,11 @@ public class DatabaseServiceDirectJdbc {
         String query = "SELECT * FROM employees";
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-                result.add(new Employee(resultSet.getInt("id"),
-                                        resultSet.getString("name"),
-                                        resultSet.getInt("age")));
+                result.add(new Employee(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("age")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,3 @@
 package main.db;
 
-public record Employee(Integer id,
-                       String name,
-                       Integer age) {
-}
+public record Employee(Integer id, String name, Integer age) {}

@@ -1,7 +1,6 @@
 package main.cdi.dependencyinjection;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Singleton;
 
 @Singleton

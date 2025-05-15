@@ -5,8 +5,6 @@ import jakarta.ws.rs.Path;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.RestPath;
 
-import java.util.Set;
-
 /**
  * View docs at https://dummyjson.com/
  *

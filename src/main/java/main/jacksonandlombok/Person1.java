@@ -1,13 +1,12 @@
 package main.jacksonandlombok;
 
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.Optional;
 
 @EqualsAndHashCode
 @ToString
@@ -17,6 +16,7 @@ import java.util.Optional;
 @NoArgsConstructor(force = true)
 public class Person1 {
     public final String name;
+
     @Builder.Default
     public final Optional<Integer> age = Optional.empty();
 }

@@ -3,7 +3,6 @@ package main.jacksonandlombok.customserializeranddeserializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 
@@ -27,5 +26,4 @@ public class LocalDateTimeAdapterSerializer extends JsonSerializer<LocalDateTime
 
         gen.writeEndObject();
     }
-
 }

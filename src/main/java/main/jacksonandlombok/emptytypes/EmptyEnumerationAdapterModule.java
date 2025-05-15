@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -19,8 +18,8 @@ public class EmptyEnumerationAdapterModule extends SimpleModule {
 
     public EmptyEnumerationAdapterModule() {
         super(NAME, Version.unknownVersion());
-        addSerializer((Class<Enumeration<?>>)(Class<?>)Enumeration.class, new EmptyEnumSerializer());
-        addDeserializer((Class<Enumeration<?>>)(Class<?>)Enumeration.class, new EmptyEnumerationDeserializer());
+        addSerializer((Class<Enumeration<?>>) (Class<?>) Enumeration.class, new EmptyEnumSerializer());
+        addDeserializer((Class<Enumeration<?>>) (Class<?>) Enumeration.class, new EmptyEnumerationDeserializer());
     }
 
     public static class EmptyEnumSerializer extends JsonSerializer<Enumeration<?>> {

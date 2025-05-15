@@ -7,13 +7,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Optional;
 
-public class GsonOptionalDeserializer<T>
-        implements JsonSerializer<Optional<T>>, JsonDeserializer<Optional<T>> {
+public class GsonOptionalDeserializer<T> implements JsonSerializer<Optional<T>>, JsonDeserializer<Optional<T>> {
 
     @Override
     public Optional<T> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)

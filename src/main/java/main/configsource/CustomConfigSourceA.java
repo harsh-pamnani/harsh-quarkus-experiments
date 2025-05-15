@@ -1,10 +1,9 @@
 package main.configsource;
 
-import org.eclipse.microprofile.config.spi.ConfigSource;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import org.eclipse.microprofile.config.spi.ConfigSource;
 
 public class CustomConfigSourceA implements ConfigSource {
     private static final Map<String, String> configuration = new HashMap<>();

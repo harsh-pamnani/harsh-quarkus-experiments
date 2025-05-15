@@ -1,15 +1,14 @@
 package main.quarkuscditest;
 
+import static org.mockito.Mockito.when;
+
 import io.quarkus.test.junit.QuarkusMock;
-import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import static org.mockito.Mockito.when;
 
 /**
  * IMPORTANT - Remember to remove @Disabled annotation to run the test
@@ -23,7 +22,7 @@ import static org.mockito.Mockito.when;
  *      - bean2 was actual scoped instance, but we have mocked it temporarily for this test using QuarkusMock.installMockForInstance
  */
 
-//@QuarkusTest
+// @QuarkusTest
 @Disabled
 public class QuarkusInjectTest {
 

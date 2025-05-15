@@ -1,7 +1,6 @@
 package main.cdi.injectusingannotations.courierpay.cache;
 
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.time.Duration;
 
 @ApplicationScoped

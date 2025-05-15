@@ -1,14 +1,12 @@
 package main.restclients;
 
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
-import org.jboss.resteasy.reactive.RestQuery;
-
 import java.util.Set;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+import org.jboss.resteasy.reactive.RestQuery;
 
 @Path("/extensions")
 @RegisterRestClient(configKey = "quarkus-extension-random-key")

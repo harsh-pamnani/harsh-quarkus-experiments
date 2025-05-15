@@ -27,11 +27,8 @@ public class UniCombineAll {
             return "Task 2";
         });
 
-        Uni<String> combinedUni = Uni.combine()
-                                     .all()
-                                     .unis(uni1, uni2)
-                                     .asTuple()
-                                     .map(tuple -> tuple.getItem1() + " " + tuple.getItem2());
+        Uni<String> combinedUni =
+                Uni.combine().all().unis(uni1, uni2).asTuple().map(tuple -> tuple.getItem1() + " " + tuple.getItem2());
 
         // combinedUni result executed only after both Uni completed
         log.info("Uni execution started");

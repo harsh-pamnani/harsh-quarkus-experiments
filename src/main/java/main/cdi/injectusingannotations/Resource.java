@@ -11,14 +11,12 @@ import org.jboss.logging.Logger;
  * ClassChildB has RandomCustomizedQualifier qualifier attached to it.
  *      As for classParent2, RandomCustomizedQualifier is mentioned, it will inject bean for ClassChildB.
  */
-
 @Path("/cdi-annotation")
 public class Resource {
     ClassParent classParent1;
     ClassParent classParent2;
 
-    public Resource(ClassParent classParent1,
-                    @RandomCustomizedQualifier ClassParent classParent2) {
+    public Resource(ClassParent classParent1, @RandomCustomizedQualifier ClassParent classParent2) {
         this.classParent1 = classParent1;
         this.classParent2 = classParent2;
     }

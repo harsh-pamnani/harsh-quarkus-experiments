@@ -2,19 +2,18 @@ package main.concepts;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import lombok.extern.jbosslog.JBossLog;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import lombok.extern.jbosslog.JBossLog;
 
 @JBossLog
 public class MemoizedFunctionCaffeine {
 
     // Create a cache with a maximum size of 100 and an expiration time of 10 seconds
     private static final Cache<Integer, Integer> cache = Caffeine.newBuilder()
-                                                           .maximumSize(100)
-                                                           .expireAfterWrite(10, TimeUnit.SECONDS)
-                                                           .build();
+            .maximumSize(100)
+            .expireAfterWrite(10, TimeUnit.SECONDS)
+            .build();
 
     public static void main(String[] args) throws InterruptedException {
         log.info("First call will take more time to compute the value");

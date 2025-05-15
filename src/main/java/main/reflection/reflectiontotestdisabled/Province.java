@@ -1,16 +1,18 @@
 package main.reflection.reflectiontotestdisabled;
 
-
-//@RegisterForReflection
+// @RegisterForReflection
 public enum Province {
     AB,
     BC,
     ON,
     UNKNOWN,
 
-    @Deprecated AK,
-    @Deprecated IA,
-    @Deprecated NY;
+    @Deprecated
+    AK,
+    @Deprecated
+    IA,
+    @Deprecated
+    NY;
 
     public static boolean isDeprecated(String province) {
         try {

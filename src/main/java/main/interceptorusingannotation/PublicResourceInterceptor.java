@@ -18,7 +18,7 @@ public class PublicResourceInterceptor {
 
             if (result instanceof Uni) {
                 return ((Uni<?>) result).onFailure().recoverWithUni(error -> Uni.createFrom()
-                                                                                .failure(processException(error)));
+                        .failure(processException(error)));
             }
 
             return result;

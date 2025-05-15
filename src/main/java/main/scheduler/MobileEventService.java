@@ -16,8 +16,8 @@ public class MobileEventService {
     @POST
     public void sendCourierMobileEvent(EventData eventData) {
         /*
-         Do other stuff for storing the event to DynamoDB and sending it to AppSync mutation
-         */
+        Do other stuff for storing the event to DynamoDB and sending it to AppSync mutation
+        */
 
         // Now, add the message in the list to be checked for retries
         messageStatusChecker.scheduleMessageForRetry(eventData.sessionId(), eventData.offset());

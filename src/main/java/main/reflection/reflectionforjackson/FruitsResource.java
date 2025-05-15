@@ -1,9 +1,5 @@
 package main.reflection.reflectionforjackson;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Set;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.inject.Inject;
@@ -11,20 +7,23 @@ import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 /*
-    IMPORTANT
-    Uncomment @QuarkusMain from everywhere in the project to use the REST service
+   IMPORTANT
+   Uncomment @QuarkusMain from everywhere in the project to use the REST service
 
-    1. Generate the native-image using "native" profile (just run clean install with native profile)
-    2. That will generate the native image in target folder
-    3. Run the native image using "./target/reflection-1.0.0-SNAPSHOT-runner main.reflection.Exp2"
-    4. Notice that Fruit1 and Fruit2 are both exactly the same. But since Fruit1 is used in REST endpoints, Quarkus will register it for
-       reflection automatically.
-    5. Since Fruit2 is not used in REST endpoints, and it is not manually registered for reflection -> When we try to deserialize it using
-       Jackson, it will throw an exception
-    6. Just add @RegisterForReflection in Fruit2 and run the native image again. It should work now.
- */
+   1. Generate the native-image using "native" profile (just run clean install with native profile)
+   2. That will generate the native image in target folder
+   3. Run the native image using "./target/reflection-1.0.0-SNAPSHOT-runner main.reflection.Exp2"
+   4. Notice that Fruit1 and Fruit2 are both exactly the same. But since Fruit1 is used in REST endpoints, Quarkus will register it for
+      reflection automatically.
+   5. Since Fruit2 is not used in REST endpoints, and it is not manually registered for reflection -> When we try to deserialize it using
+      Jackson, it will throw an exception
+   6. Just add @RegisterForReflection in Fruit2 and run the native image again. It should work now.
+*/
 @Path("/fruits")
 public class FruitsResource {
 

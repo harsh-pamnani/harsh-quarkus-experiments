@@ -1,7 +1,6 @@
 package main.configsource;
 
 import io.smallrye.config.ConfigMapping;
-import io.smallrye.config.WithName;
 
 /**
  * Reference https://quarkus.io/guides/config-reference#environment-variables
@@ -21,8 +20,10 @@ import io.smallrye.config.WithName;
 @ConfigMapping(prefix = "xyz")
 public interface AppConfig {
 
-    // Since we have added `apiKey` as method name in java, it will look for `xyz.api-key` property as per naming above in PART-1
+    // Since we have added `apiKey` as method name in java, it will look for `xyz.api-key` property as per naming above
+    // in PART-1
     // If it is in application.properties, it should be exact match - `xyz.api-key`. No alterations allowed.
-    // If not, based on Part-2 documentation, first it will look for `xyz.api-key` env, then `xyz_api_key` env, and then `XYZ_API_KEY` env
+    // If not, based on Part-2 documentation, first it will look for `xyz.api-key` env, then `xyz_api_key` env, and then
+    // `XYZ_API_KEY` env
     String apiKey();
 }

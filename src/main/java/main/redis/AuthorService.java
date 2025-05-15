@@ -1,7 +1,6 @@
 package main.redis;
 
 import jakarta.enterprise.context.ApplicationScoped;
-
 import java.util.Optional;
 
 @ApplicationScoped

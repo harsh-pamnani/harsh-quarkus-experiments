@@ -1,5 +1,6 @@
 package main.faulttolerance;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,8 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
-
-import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 
 // Reference - https://quarkus.io/guides/smallrye-fault-tolerance
@@ -37,13 +36,10 @@ public class CoffeeRepositoryService {
             return Collections.emptyList();
         }
         return coffeeList.values().stream()
-                         .filter(coffee -> !id.equals(coffee.id))
-                         .limit(2)
-                         .collect(Collectors.toList());
+                .filter(coffee -> !id.equals(coffee.id))
+                .limit(2)
+                .collect(Collectors.toList());
     }
-
-
-
 
     private AtomicLong counter = new AtomicLong(0);
 

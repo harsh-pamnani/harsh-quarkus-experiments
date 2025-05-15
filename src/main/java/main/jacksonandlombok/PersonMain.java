@@ -12,6 +12,8 @@ public class PersonMain {
 
         mapper.registerModule(new Jdk8Module());
         Person2 p2 = mapper.readValue("{\"name\": \"harsh\"}", Person2.class);
-        System.out.println(p2);// Person2 is a record. So, by default it will generate `null` for age. but we have registered Jdk8Module. So, it will generate empty Optional
+        System.out.println(
+                p2); // Person2 is a record. So, by default it will generate `null` for age. but we have registered
+        // Jdk8Module. So, it will generate empty Optional
     }
 }

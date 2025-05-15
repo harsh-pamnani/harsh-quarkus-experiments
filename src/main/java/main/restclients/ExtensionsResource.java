@@ -2,10 +2,9 @@ package main.restclients;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import java.util.Set;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.RestPath;
-
-import java.util.Set;
 
 /**
  * http://localhost:9999/extension/id/io.quarkus:quarkus-rest-client

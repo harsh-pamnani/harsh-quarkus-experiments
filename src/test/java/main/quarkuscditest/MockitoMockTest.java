@@ -1,14 +1,13 @@
 package main.quarkuscditest;
 
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.when;
+// import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * IMPORTANT - Remember to remove @Disabled annotation to run the test
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.when;
  *      - bean2 actual instance, so it will return actual message.
  */
 
-//@ExtendWith(MockitoExtension.class)
+// @ExtendWith(MockitoExtension.class)
 @Disabled
 public class MockitoMockTest {
 

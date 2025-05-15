@@ -37,7 +37,7 @@ public class GreetingResource {
     @Inject
     private ClassWithSingletonScoped classWithSingletonScoped;
 
-    @Inject 
+    @Inject
     private ClassWithRequestScoped classWithRequestScoped;
 
     @GET
@@ -45,7 +45,9 @@ public class GreetingResource {
     public String hello() {
         // https://stackoverflow.com/questions/18378608/why-is-constructor-of-cdi-bean-class-called-more-than-once
         LOGGER.info(classWithSingletonScoped.greetUser("Harsh")); // Only Single instance created
-        LOGGER.info(classWithApplicationScoped.greetUser("Harsh")); // Only Single instance created lazily, i.e. when a method is invoked upon an injected instance for the first time.
+        LOGGER.info(classWithApplicationScoped.greetUser(
+                "Harsh")); // Only Single instance created lazily, i.e. when a method is invoked upon an injected
+        // instance for the first time.
         LOGGER.info(classWithRequestScoped.greetUser("Harsh")); // Instance created for each request
         return "Hello from RESTEasy Reactive";
     }

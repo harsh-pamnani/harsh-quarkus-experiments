@@ -1,7 +1,6 @@
 package main.testprofile;
 
 import io.quarkus.test.junit.QuarkusTestProfile;
-
 import java.util.Map;
 
 public class AmazingPropOverrideTestProfile implements QuarkusTestProfile {

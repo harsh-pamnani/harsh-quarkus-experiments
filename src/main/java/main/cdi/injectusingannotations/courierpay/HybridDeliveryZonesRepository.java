@@ -8,8 +8,8 @@ public class HybridDeliveryZonesRepository implements DeliveryZonesRepository {
     private final DeliveryZonesRepository deliveryZonesRepository;
     private final Cache deliveryZonesCache;
 
-    public HybridDeliveryZonesRepository(@UnderlyingRepository DeliveryZonesRepository deliveryZonesRepository,
-                                         Cache deliveryZonesCache) {
+    public HybridDeliveryZonesRepository(
+            @UnderlyingRepository DeliveryZonesRepository deliveryZonesRepository, Cache deliveryZonesCache) {
         this.deliveryZonesRepository = deliveryZonesRepository;
         this.deliveryZonesCache = deliveryZonesCache;
     }

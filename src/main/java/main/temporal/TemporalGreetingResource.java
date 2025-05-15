@@ -17,10 +17,9 @@ public class TemporalGreetingResource {
         PizzaWorkflow workflow = client.newWorkflowStub(
                 PizzaWorkflow.class,
                 WorkflowOptions.newBuilder()
-                               .setTaskQueue("PIZZA_QUEUE")
-                               .setWorkflowId(orderId)
-                               .build()
-        );
+                        .setTaskQueue("PIZZA_QUEUE")
+                        .setWorkflowId(orderId)
+                        .build());
 
         workflow.startOrder(customerId);
         return "Pizza ";

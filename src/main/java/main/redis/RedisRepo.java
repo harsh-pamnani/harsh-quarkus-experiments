@@ -7,11 +7,10 @@ import io.quarkus.redis.datasource.value.SetArgs;
 import io.quarkus.redis.datasource.value.ValueCommands;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.jboss.logging.Logger;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class RedisRepo {
@@ -22,8 +21,7 @@ public class RedisRepo {
     private static final Duration EXPIRATION = Duration.ofMinutes(10);
     private static final Logger LOGGER = Logger.getLogger(RedisRepo.class);
 
-    public RedisRepo(RedisDataSource ds,
-                     ReactiveRedisDataSource reactive) {
+    public RedisRepo(RedisDataSource ds, ReactiveRedisDataSource reactive) {
         authorCommands = ds.value(Author.class);
         keyCommands = reactive.key();
         setArgs = new SetArgs().ex(EXPIRATION);
@@ -45,8 +43,9 @@ public class RedisRepo {
     void del(String key) {
         try {
             authorCommands.getdel(buildRedisKey(key));
-//            keyCommands.del(buildRedisKey(key)).onItem().onFailure().invoke(() -> LOGGER.error("Error deleting the key"));
-//            keyCommands.del(buildRedisKey(key)).replaceWithVoid();
+            //            keyCommands.del(buildRedisKey(key)).onItem().onFailure().invoke(() -> LOGGER.error("Error
+            // deleting the key"));
+            //            keyCommands.del(buildRedisKey(key)).replaceWithVoid();
         } catch (Exception e) {
             e.printStackTrace();
         }

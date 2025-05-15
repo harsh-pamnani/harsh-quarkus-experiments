@@ -32,13 +32,15 @@ public class DslContextProducer {
     }
 
     private Configuration getConfiguration() {
-        return new DefaultConfiguration().set(dataSource)
-                                         .set(SQLDialect.MYSQL)
-                                         .set(new Settings().withExecuteLogging(true)
-                                                            .withRenderFormatted(true)
-                                                            .withRenderCatalog(false)
-                                                            .withRenderSchema(false)
-                                                            .withRenderQuotedNames(RenderQuotedNames.EXPLICIT_DEFAULT_UNQUOTED)
-                                                            .withRenderNameCase(RenderNameCase.LOWER_IF_UNQUOTED));
+        return new DefaultConfiguration()
+                .set(dataSource)
+                .set(SQLDialect.MYSQL)
+                .set(new Settings()
+                        .withExecuteLogging(true)
+                        .withRenderFormatted(true)
+                        .withRenderCatalog(false)
+                        .withRenderSchema(false)
+                        .withRenderQuotedNames(RenderQuotedNames.EXPLICIT_DEFAULT_UNQUOTED)
+                        .withRenderNameCase(RenderNameCase.LOWER_IF_UNQUOTED));
     }
 }

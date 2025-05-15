@@ -10,8 +10,7 @@ public class EmployeeWithCreator {
     public final String name;
 
     @JsonCreator
-    public EmployeeWithCreator(@JsonProperty("id") Integer id,
-                               @JsonProperty("firstName") String name) {
+    public EmployeeWithCreator(@JsonProperty("id") Integer id, @JsonProperty("firstName") String name) {
         this.id = id;
         this.name = name;
     }

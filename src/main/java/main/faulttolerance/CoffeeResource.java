@@ -1,17 +1,15 @@
 package main.faulttolerance;
 
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.jboss.logging.Logger;
@@ -60,7 +58,7 @@ public class CoffeeResource {
 
     @GET
     @Path("/{id}/recommendations")
-//    @Fallback(fallbackMethod = "fallbackRecommendations")
+    //    @Fallback(fallbackMethod = "fallbackRecommendations")
     @Timeout(250)
     public List<Coffee> recommendations(@PathParam("id") int id) {
         long started = System.currentTimeMillis();
@@ -71,8 +69,9 @@ public class CoffeeResource {
             LOGGER.infof("CoffeeResource#recommendations() invocation #%d returning successfully", invocationNumber);
             return coffeeRepository.getRecommendations(id);
         } catch (InterruptedException e) {
-            LOGGER.errorf("CoffeeResource#recommendations() invocation #%d timed out after %d ms",
-                          invocationNumber, System.currentTimeMillis() - started);
+            LOGGER.errorf(
+                    "CoffeeResource#recommendations() invocation #%d timed out after %d ms",
+                    invocationNumber, System.currentTimeMillis() - started);
             return null;
         }
     }
@@ -94,9 +93,6 @@ public class CoffeeResource {
         return Collections.singletonList(new Coffee(11, "fallback coffee", "XYZ", 10));
     }
 
-
-
-
     @Path("/{id}/availability")
     @GET
     public Response availability(int id) {
@@ -116,9 +112,9 @@ public class CoffeeResource {
             String message = e.getClass().getSimpleName() + ": " + e.getMessage();
             LOGGER.errorf("CoffeeResource#availability() invocation #%d failed: %s", invocationNumber, message);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                           .entity(message)
-                           .type(MediaType.TEXT_PLAIN_TYPE)
-                           .build();
+                    .entity(message)
+                    .type(MediaType.TEXT_PLAIN_TYPE)
+                    .build();
         }
     }
 }

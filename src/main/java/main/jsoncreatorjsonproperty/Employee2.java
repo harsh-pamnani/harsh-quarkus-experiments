@@ -11,8 +11,7 @@ public class Employee2 {
         this(null, null);
     }
 
-    public Employee2(Integer id,
-                     String name) {
+    public Employee2(Integer id, String name) {
         this.id = id;
         this.name = name;
     }

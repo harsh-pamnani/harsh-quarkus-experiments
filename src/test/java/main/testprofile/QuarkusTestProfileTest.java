@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 @JBossLog
 @QuarkusTest
 class QuarkusTestProfileTest {
-    @ConfigProperty(name="amazingProp")
+    @ConfigProperty(name = "amazingProp")
     String amazingProp;
 
-    @ConfigProperty(name="awesomeProp")
+    @ConfigProperty(name = "awesomeProp")
     String awesomeProp;
 
     @Test
@@ -26,15 +26,16 @@ class QuarkusTestProfileTest {
 @JBossLog
 @QuarkusTest
 class QuarkusTestProfileWithOverrideTest {
-    @ConfigProperty(name="amazingProp")
+    @ConfigProperty(name = "amazingProp")
     String amazingProp;
 
-    @ConfigProperty(name="awesomeProp")
+    @ConfigProperty(name = "awesomeProp")
     String awesomeProp;
 
     @Test
     void testWithOverride() {
         log.info("HP: amazingProp with override: " + amazingProp); // Value is overridden by test profile
-        log.info("HP: awesomeProp without override: " + awesomeProp); // No override in test profile. So, value will be taken from props
+        log.info("HP: awesomeProp without override: "
+                + awesomeProp); // No override in test profile. So, value will be taken from props
     }
 }

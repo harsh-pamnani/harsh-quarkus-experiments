@@ -1,9 +1,7 @@
 package main.jacksonandlombok;
 
+import java.util.Optional;
 import lombok.Builder;
 
-import java.util.Optional;
-
 @Builder(toBuilder = true)
-public record Person2(String name, Optional<Integer> age) {
-}
+public record Person2(String name, Optional<Integer> age) {}

@@ -2,7 +2,6 @@ package main.jacksonandlombok.emptytypes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.Collections;
 import java.util.Enumeration;
 

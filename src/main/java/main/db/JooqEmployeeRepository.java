@@ -1,13 +1,12 @@
 package main.db;
 
+import static org.jooq.temp.tables.Employee.EMPLOYEE;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import java.util.List;
 import org.jooq.DSLContext;
 import org.jooq.temp.tables.records.EmployeeRecord;
-
-import java.util.List;
-
-import static org.jooq.temp.tables.Employee.EMPLOYEE;
 
 @ApplicationScoped
 public class JooqEmployeeRepository {
@@ -20,11 +19,9 @@ public class JooqEmployeeRepository {
     }
 
     public List<Employee> getAllEmployees() {
-        return dslContext.selectFrom(EMPLOYEE)
-                         .fetch()
-                         .stream()
-                         .map(this::deserialize)
-                         .toList();
+        return dslContext.selectFrom(EMPLOYEE).fetch().stream()
+                .map(this::deserialize)
+                .toList();
     }
 
     public Employee createEmployee(Employee employee) {

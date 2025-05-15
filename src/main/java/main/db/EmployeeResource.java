@@ -4,7 +4,6 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-
 import java.util.List;
 
 @Path("/employee")
@@ -14,8 +13,8 @@ public class EmployeeResource {
     final DatabaseServiceDirectJdbc databaseServiceDirectJdbc;
 
     @Inject
-    public EmployeeResource(JooqEmployeeRepository jooqEmployeeRepository,
-                            DatabaseServiceDirectJdbc databaseServiceDirectJdbc) {
+    public EmployeeResource(
+            JooqEmployeeRepository jooqEmployeeRepository, DatabaseServiceDirectJdbc databaseServiceDirectJdbc) {
         this.jooqEmployeeRepository = jooqEmployeeRepository;
         this.databaseServiceDirectJdbc = databaseServiceDirectJdbc;
     }

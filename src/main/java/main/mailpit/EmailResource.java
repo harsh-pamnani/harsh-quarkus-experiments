@@ -15,11 +15,7 @@ public class EmailResource {
     @POST
     @Blocking
     public void sendEmail() {
-        mailer.send(
-                Mail.withText("quarkus@quarkus.io",
-                              "Ahoy from Quarkus",
-                              "A simple email sent from a Quarkus application."
-                )
-        );
+        mailer.send(Mail.withText(
+                "quarkus@quarkus.io", "Ahoy from Quarkus", "A simple email sent from a Quarkus application."));
     }
 }

@@ -1,12 +1,11 @@
 package main.externalhttpcall;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-import java.io.IOException;
 
 @ApplicationScoped
 public class JsonPlaceholderService {
@@ -21,10 +20,7 @@ public class JsonPlaceholderService {
     }
 
     public String makeDummyJsonPlaceholderCall() throws IOException {
-        Request request = new Request.Builder()
-                .url(jsonPlaceholderHost)
-                .get()
-                .build();
+        Request request = new Request.Builder().url(jsonPlaceholderHost).get().build();
 
         Response response = httpClient.newCall(request).execute();
         if (!response.isSuccessful()) {

@@ -15,7 +15,8 @@ public class AccessControlledResource {
     }
 
     // This public resource is exposed externally, so it must be secured using the custom @PublicResource annotation.
-    // The interceptor processes requests, logs any exceptions, and returns a generic "Unexpected error occurred" if an error occurs.
+    // The interceptor processes requests, logs any exceptions, and returns a generic "Unexpected error occurred" if an
+    // error occurs.
     @GET
     @Path("/public")
     @PublicResource
@@ -24,7 +25,8 @@ public class AccessControlledResource {
         return "public";
     }
 
-    // This private resource is used exclusively by internal services, so the @PublicResource annotation is not required.
+    // This private resource is used exclusively by internal services, so the @PublicResource annotation is not
+    // required.
     // If an exception occurs, the actual error will be returned.
     @GET
     @Path("/private")
