@@ -367,6 +367,41 @@
                     </generator>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.44.3</version>
+                <configuration>
+                    <java>
+                        <cleanthat>
+                            <sourceJdk>${maven.compiler.source}</sourceJdk>
+                            <mutators>
+                                <mutator>SafeAndConsensual</mutator>
+                                <mutator>LambdaReturnsSingleStatement</mutator>
+                                <mutator>LambdaIsMethodReference</mutator>
+                                <mutator>SimplifyBooleanInitialization</mutator>
+                                <mutator>OptionalNotEmpty</mutator>
+                                <mutator>UnnecessaryImport</mutator>
+                            </mutators>
+                        </cleanthat>
+                        <palantirJavaFormat>
+                            <version>2.61.0</version>
+                        </palantirJavaFormat>
+                        <importOrder />
+                        <removeUnusedImports />
+                        <formatAnnotations />
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
