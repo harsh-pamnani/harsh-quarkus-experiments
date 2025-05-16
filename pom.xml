@@ -402,6 +402,28 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>com.rudikershaw.gitbuildhook</groupId>
+                <artifactId>git-build-hook-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>configure</goal>
+                            <goal>initialize</goal>
+                            <goal>install</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <gitConfig>
+                        <core.hooksPath>${project.basedir}/git-hooks</core.hooksPath>
+                        <custom.configuration>true</custom.configuration>
+                    </gitConfig>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

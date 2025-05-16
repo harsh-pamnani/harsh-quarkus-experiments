@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if ./mvnw spotless:check ; then
+    echo "Your code is spotless! Proceeding with the commit."
+else
+    ./mvnw spotless:apply
+
+    STG_FILES=$(git diff --name-only --cached --relative)
+    FRT_FILES=$(git diff --name-only)
+    if [ ! -z "$FRT_FILES" ] && [ ! -z "$STG_FILES" ]; then
+        while IFS= read -r line; do
+            if [[ "$STG_FILES" =~ .*"$line".* ]]; then
+                echo "🧼 Spotless formatted some files (e.g. ${line}). Please review the changes and commit them again"
+                exit 1;
+            fi
+        done <<< "$FRT_FILES"
+    fi
+fi
