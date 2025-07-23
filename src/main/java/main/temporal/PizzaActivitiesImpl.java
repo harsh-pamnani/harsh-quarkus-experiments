@@ -1,12 +1,13 @@
 package main.temporal;
 
+import java.util.Optional;
 import lombok.extern.jbosslog.JBossLog;
 
 @JBossLog
 public class PizzaActivitiesImpl implements PizzaActivities {
     @Override
     public String takeOrder(String orderId) {
-        log.info("Order taken.");
+        log.info("Steps performed to take order.");
         return "Order taken. Order ID: " + orderId;
     }
 
@@ -33,13 +34,12 @@ public class PizzaActivitiesImpl implements PizzaActivities {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        log.info("Charged: " + customerId);
         return "Charged: " + customerId;
     }
 
     @Override
-    public String deliverPizza() {
-        log.info("Pizza delivered to customer.");
-        return "Pizza delivered to customer";
+    public String deliverPizza(Optional<Integer> tip) {
+        log.info("Steps performed to deliver pizza.");
+        return "Pizza delivered to customer. Tip is : " + tip;
     }
 }
