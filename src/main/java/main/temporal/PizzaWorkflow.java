@@ -6,5 +6,5 @@ import io.temporal.workflow.WorkflowMethod;
 @WorkflowInterface
 public interface PizzaWorkflow {
     @WorkflowMethod
-    void startOrder(String customerId, String orderId);
+    String startOrder(String customerId, String orderId);
 }

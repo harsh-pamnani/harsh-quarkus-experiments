@@ -9,8 +9,8 @@ public interface PizzaActivities {
     String takeOrder(String orderId);
 
     @ActivityMethod
-    void chargeCustomer(String customerId);
+    String chargeCustomer(String customerId);
 
     @ActivityMethod
-    void deliverPizza();
+    String deliverPizza();
 }

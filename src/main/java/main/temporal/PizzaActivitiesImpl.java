@@ -26,7 +26,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
     */
 
     @Override
-    public void chargeCustomer(String customerId) {
+    public String chargeCustomer(String customerId) {
         log.info("Starting to charge.");
         try {
             Thread.sleep(100);
@@ -34,10 +34,12 @@ public class PizzaActivitiesImpl implements PizzaActivities {
             Thread.currentThread().interrupt();
         }
         log.info("Charged: " + customerId);
+        return "Charged: " + customerId;
     }
 
     @Override
-    public void deliverPizza() {
+    public String deliverPizza() {
         log.info("Pizza delivered to customer.");
+        return "Pizza delivered to customer";
     }
 }
