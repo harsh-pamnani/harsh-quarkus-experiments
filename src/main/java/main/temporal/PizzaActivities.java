@@ -6,7 +6,7 @@ import io.temporal.activity.ActivityMethod;
 @ActivityInterface
 public interface PizzaActivities {
     @ActivityMethod
-    void takeOrder();
+    String takeOrder(String orderId);
 
     @ActivityMethod
     void chargeCustomer(String customerId);

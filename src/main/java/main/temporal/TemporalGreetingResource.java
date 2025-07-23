@@ -21,7 +21,7 @@ public class TemporalGreetingResource {
                         .setWorkflowId(orderId)
                         .build());
 
-        workflow.startOrder(customerId);
+        workflow.startOrder(customerId, orderId);
         return "Pizza ";
     }
 }

@@ -20,8 +20,8 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
                     .build());
 
     @Override
-    public void startOrder(String customerId) {
-        activities.takeOrder();
+    public void startOrder(String customerId, String orderId) {
+        activities.takeOrder(orderId);
         activities.chargeCustomer(customerId);
         activities.deliverPizza();
     }

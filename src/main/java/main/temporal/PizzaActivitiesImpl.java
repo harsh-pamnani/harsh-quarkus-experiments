@@ -5,8 +5,9 @@ import lombok.extern.jbosslog.JBossLog;
 @JBossLog
 public class PizzaActivitiesImpl implements PizzaActivities {
     @Override
-    public void takeOrder() {
+    public String takeOrder(String orderId) {
         log.info("Order taken.");
+        return "Order taken. Order ID: " + orderId;
     }
 
     /*
@@ -28,7 +29,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
     public void chargeCustomer(String customerId) {
         log.info("Starting to charge.");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
